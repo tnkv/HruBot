@@ -6,13 +6,12 @@ async def mainHru(message: str) -> str:
     hru_msg = ""
     for i in range(len(message)):
         if isLetter(message[i]):
-            match counter:
-                case 0:
-                    hru_msg += "х" if not message[i].isupper() else "Х"
-                case 1:
-                    hru_msg += "р" if not message[i].isupper() else "Р"
-                case _:
-                    hru_msg += "ю" if not message[i].isupper() else "Ю"
+            if counter ==  0:
+                hru_msg += "х" if not message[i].isupper() else "Х"
+            elif counter == 1:
+                hru_msg += "р" if not message[i].isupper() else "Р"
+            else:
+                hru_msg += "ю" if not message[i].isupper() else "Ю"
             counter += 1
         else:
             hru_msg += message[i]
