@@ -17,7 +17,7 @@ async def mainHru(message: str) -> str:
             hru_msg += message[i]
             counter = 0
     if len(message) != 0: return "> " + hru_msg
-    return "🔪🐖"
+    return "🐖💨"
 
 
 def isLetter(letter: str) -> bool:
