@@ -15,7 +15,9 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start'])
 async def send_welcome(message: types.Message):
-    await message.reply("Привет, это хрю-хрю бот. Напиши любое сообщение сюда и оно будет хрюифицированно!\nЛибо воспользуйся <code>@hruhruubot сообщение</code> в любом чате.\n\nby @alpine & @tnkv_trolling")
+    await message.reply(
+        "Привет, это хрю-хрю бот. Напиши любое сообщение сюда и оно будет хрюифицированно!\nЛибо воспользуйся <code>@hruhruubot сообщение</code> в любом чате.\n\nby @alpine & @tnkv_trolling")
+
 
 @dp.message_handler()
 async def echo(message: types.Message):
@@ -26,9 +28,10 @@ async def echo(message: types.Message):
 async def inline_echo(inline_query: InlineQuery):
     text = inline_query.query
     result_id: str = hashlib.md5(text.encode()).hexdigest()
+    hruificated = await hru.mainHru(text)
     item = InlineQueryResultArticle(
         id=result_id,
-        title=f'Отправить {await hru.mainHru(text)}',
+        title=f'Отправить {hruificated}',
         input_message_content=types.InputTextMessageContent(
             message_text=hruificated)
     )
